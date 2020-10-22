@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+
+\usepackage[spanish,activeacute]{babel}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[bottom]{footmisc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+
+\setlength{\parindent}{1.0em}
+\setlength{\parskip}{1.0em}
+\setlength{\emergencystretch}{5.0em}
+\setlength{\belowcaptionskip}{-10pt}
+\counterwithin{figure}{section}
+\titlespacing*{\section}{0em}{3.5em}{1.5em}
+\setcounter{tocdepth}{2}
+\hypersetup{
+	linktoc=all
+}
+
+
+\title{\Huge Backups}
+\author{Eugenia Damonte, Ariel Fideleff y Mart\'in Go\~ni}
+\date{}
+
+
+\definecolor{light-orange}{RGB}{168,87,0}
+\definecolor{light-blue}{RGB}{64, 76, 201}
+\definecolor{dark-gray}{RGB}{100,100,100}
+\definecolor{light-red}{RGB}{201, 60, 60}
+\definecolor{fuchsia}{RGB}{168,0,168}
+
+
+\newtcolorbox{code-box}{colback=white!75!gray,colframe=white!15!gray,fontupper=\linespread{1.15}\selectfont}
+
+
+\newcommand{\imagecaption}[1]{\vspace{-7pt}\caption*{\char91\ref{fig:#1}\char93}}
+\newcommand{\codetext}[2]{\large\texttt{\textcolor{#1}{#2}}}
+\newcommand{\backup}[0]{backup}
+
+
+\begin{document}
+	\pagenumbering{gobble}
+	\maketitle
+	\newpage
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+
+	
+	\section{Backups}
+	\subsection{Que es un backup}
+		En el mundo del IT un backup es una copia de parte o toda la informaci'on de una computadora, almacenada en una unidad de almacenamiento distinta a la de la computadora. Esta puede luego ser usada para recuperar la informac'on original en caso de que ocurra una p'erdida de datos. Es importante recalcar que una p'erdida de datos puede ocurrir no solo debido a daño al sistema, ya sea de hardware o software, sino que tambi'en puede ser provocada por un error humano(por ejemplo borrar un archivo importante).
+
+		Para cumplir su funci'on un backup debe contener por lo menos una copia de toda la informaci'on que se considere vale la pena guardar. Esto nos introduce a un dilema muy importante, ¿que informaci'on vale la pena guardar?. En principio uno podría pensar que simplemente deberiamos hacer un backup de todo el sistema, para no tener que tomar esta decisi'on. Sin embargo a medida que crece el tama'no y complejidad del sistema se vuelve cada vez mas costoso, en todo sentido, realizar backups completos. Es por esto que hoy en día existen y se utilizan distintos tipos de backups para alcanzar un balance.
+
+	 \subsection{Tipos de backups}
+		Antes de poder elegir que tipo de backup hacer hay que elegir que m'etodo utilizar para el mismo, los dos que se usan hoy en d'ia son:
+		\begin{itemize}
+			\item \textbf{Backup por archivos:} El backup por archivos es la forma original en que se hac'ian los backups. En este todos los archivos y carpetas a los que se les debe realizar un backup son copiados utilizando las utilidades proveídas por el sistema operativo. Este m'etodo si bien es simple tambi'en es lento y consume una gran cantidad de recursos\footnote{Esto se debe a que para copiar un archivo utilizando el sistema operativo se debe: Encontrar los bloques en el disco duro donde se encuentra la carpeta que contiene al archivo, leer la carpeta, buscar el archivo especificado, determinar en que bloques se encuentra y finalmente copiarlo.}.
+			\item \textbf{Backup por im'agenes:} Otra opci'on que esta ganando popularidad es el backup por im'agenes, este m'etodo sobrepasa gran parte de las utilitades del sistema operativo, copiando bloques del disco duro de manera directa. Esto le permite ser mucho m'as eficiente a la hora de copiar archivos que han sido modificados, esto es porque no es necesario copiar todo el archivo, solo los bloques que han sido modificados. 
+		\end{itemize}
+
+		Cabe destacar que estos m'etodos no son mutuamente exclusivos, se pueden usar en conjunto para obtener mayor eficiencia y robustez. Por ejemplo se puede tener un sistema que haga un backup por im'agen diariamente y uno por archivos semanalmente.
+
+		Una vez que se decidi'o que metodo utilizar para hacer los backups ahora hay que decidir que m'etodo usar para los mismos. Los backups se dividen en tres tipos:
+		\begin{itemize}
+			\item \textbf{Backup completo: } Es el mas simple y el m'etodo original que se usaba para hacer los backups. Copia toda la informaci'on en el sistema especificado. Lo bueno de este m'etodo es que el backup es autocontenido, esto significa que no se requiere de ning'un otro tipo de informaci'on o archivo para que este funcione. Por el otro lado, se necesitan grandes cantidades de espacio y pueden ser casi id'enticos a backups completos anteriores.
+			\item \textbf{Backup diferencial: } Este tipo de backup solo copia las diferencias entre el sistema actual y el del 'ultimo backup completo. La principal ventaja de este m'etodo es que es mucho mas r'apido y ocupa mucho menos espacio que un backup completo. La desventaja es que para poder recupera la informaci'n con un sistema de backup diferencial se necesita el 'ultim backup completo junto con el backup diferencial.
+			\item \textbf{Backup incremental: }El backup incremental solo copia diferencias entre el el sistema actual y el 'ultimo backup completo, diferencial o incremental. La ventaja es que es a'un mas r'apido y ocupa menos espacio que un backup diferencial. El gran inconveniente con esta forma de backup es que para recuperar la informaci'on se necesitan todos los backups incrementales anteriores junto con el 'ultimo backup completo. Debido a esto recuperar informaci'on con este tipo de sistema puede ser un proceso largo.
+		\end{itemize}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Remove whitespace when done.
