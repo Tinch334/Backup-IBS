@@ -40,7 +40,7 @@
 
 \newcommand{\imagecaption}[1]{\vspace{-7pt}\caption*{\char91\ref{fig:#1}\char93}}
 \newcommand{\codetext}[2]{\large\texttt{\textcolor{#1}{#2}}}
-\newcommand{\backup}[0]{backup}
+\newcommand{\rsync}[0]{\textbf{rsync }}
 
 
 \begin{document}
@@ -54,9 +54,9 @@
 	
 	\section{Backups}
 	\subsection{Que es un backup}
-		En el mundo del IT un backup es una copia de parte o toda la informaci'on de una computadora, almacenada en una unidad de almacenamiento distinta a la de la computadora. Esta puede luego ser usada para recuperar la informac'on original en caso de que ocurra una p'erdida de datos. Es importante recalcar que una p'erdida de datos puede ocurrir no solo debido a daño al sistema, ya sea de hardware o software, sino que tambi'en puede ser provocada por un error humano(por ejemplo borrar un archivo importante).
+		En el mundo del IT un backup es una copia de parte o toda la informaci'on de una computadora, almacenada en una unidad de almacenamiento distinta a la de la computadora. Esta puede luego ser usada para recuperar la informac'on original en caso de que ocurra una p'erdida de datos. Es importante recalcar que una p'erdida de datos puede ocurrir no solo debido a daño al sistema, ya sea de hardware o software, sino que tambi'en puede ser provocada por un error humano(por ejemplo borrar un archivo importante). Para cumplir su funci'on un backup debe contener por lo menos una copia de toda la informaci'on que se considere vale la pena guardar. Esto nos introduce a un dilema muy importante, ¿que informaci'on vale la pena guardar?
 
-		Para cumplir su funci'on un backup debe contener por lo menos una copia de toda la informaci'on que se considere vale la pena guardar. Esto nos introduce a un dilema muy importante, ¿que informaci'on vale la pena guardar?. En principio uno podría pensar que simplemente deberiamos hacer un backup de todo el sistema, para no tener que tomar esta decisi'on. Sin embargo a medida que crece el tama'no y complejidad del sistema se vuelve cada vez mas costoso, en todo sentido, realizar backups completos. Es por esto que hoy en día existen y se utilizan distintos tipos de backups para alcanzar un balance.
+		En principio uno podría pensar que simplemente deber'iamos hacer un backup de todo el sistema, para no tener que tomar esta decisi'on. Sin embargo a medida que crece el tama'no y complejidad del sistema se vuelve cada vez mas costoso, en todo sentido, realizar backups completos. Algo que tambi'en se debe tomar en cuenta al hacer esta decisi'on es el valor del sistema en s'i, es decir cuanto vale el sistema operativo, sus configuraciones y ajustes. Si bien a simple vista esto puede parecer algo no muy importante en sistemas grandes y complejos, que requieren una gran cantidad de conocimiento y experiencia para configurar la configuraci'on puede ser igual de valiosa que la informaci'on que almacena el sistema.
 
 	 \subsection{Tipos de backups}
 		Antes de poder elegir que tipo de backup hacer hay que elegir que m'etodo utilizar para el mismo, los dos que se usan hoy en d'ia son:
@@ -74,7 +74,108 @@
 			\item \textbf{Backup incremental: }El backup incremental solo copia diferencias entre el el sistema actual y el 'ultimo backup completo, diferencial o incremental. La ventaja es que es a'un mas r'apido y ocupa menos espacio que un backup diferencial. El gran inconveniente con esta forma de backup es que para recuperar la informaci'on se necesitan todos los backups incrementales anteriores junto con el 'ultimo backup completo. Debido a esto recuperar informaci'on con este tipo de sistema puede ser un proceso largo.
 		\end{itemize}
 
-\end{document}
+
+	\section{rsync}
+	\subsection{Que es rsync}
+		\rsync es una utilidad que permite transferir y sincronizar archivos, entre otras cosas, entre una computadora y un disco duro. Tambi'en es capaz de realizar esta tareas usando dispositivos de red. Su uso es muy com'un en sistemas basados en Unix, dada su simplicidad y facilidad de uso.
+
+		El programa inicial fue escrito por Andrew Tridgell y Paul Mackerras, en C. Su primera versi'on se anunci'o en Junio de 1996, luego en 1999 Tridgell habl'o sobre el diseño y la implementaci'on de \rsync en su tesis. Es similar a la utilidad \texttt{rdist -c} creada por Ralph Campbell en 1983. Actualmente Wayne Davison se encarga de mantener el proyecto
+
+	\subsection{Instalaci'on de rsync}
+		Antes de poder usar \rsync tuvimos que instalarlo. Si bien hoy en d'ia suele venir incluido con la gran mayor'ia de las distros debido a que Debian 7 es bastante viejo no la incluye. Para instalarlo usamos el comando \texttt{sudo apt-get install rsync}.
+
+		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.7]{Images/rsync/rsync_install.PNG}
+			%"\rsync" dosen't work inside of "\caption".
+    			\caption{Instalamos \textbf{rsync} con \texttt{sudo apt-get install rsync}.}
+    			\label{fig:rsync_install}
+		\end{figure}
+
+	\subsection{Uso b'asico de rsync}
+	\subsubsection{Preparando el disco}
+		Lo primero que necesitamos para hacer un backup de cualquier tipo es una unidad de almacenamiento para guardar el backup. En nuestro caso simplemente creamos otro disco duro y lo "conectamos" a la VM. Para hacer esto con la m'aquina apagada abrimos la configuraci'on y fuimos a \texttt{Storage}. All'i apretamos el bot'on para a'nadir un disco duro, esto nos llevo a un men'u  dond elegimos crear un nuevo disco. Especificamos el tipo y tama'no del disco y presionamos \texttt{Create}. Finalmente montamos el disco, para esto volvimos a apretar el bot'on para a'nadir una disco duro y seleccionamos el creado.
+
+		Es importante destacar que no se debe usar un pen drive para realizar backups. Esto es porque los transistores que almacenan informaci'on en los mismos no est'an hechos para soportar el n'umero de escrituras que se necesitan para una unidad de backup. Esto a largo plazo causa que algunos de los transistores en ellos se queden ``trabados''\footnote{Realmene no se quedan ``trabados'' sino que el transistor, normalmente un FGT, pierde su capacidad de cargarse y descargarse, y por tanto de cambiar de estado.} en una posici'on haciendo imposible contiunar us'andolo. Con el tiempo esto causa deteriorio en la capacidad y velocidad de funcionamiento de la unidad y puede incluso causar perdida de datos.
+
+		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.65]{Images/rsync/rsync_hdd_config.PNG}
+    			\caption{Creamos un nuevo disco y lo montamos en la VM}
+    			\label{fig:rsync_usb_config}
+		\end{figure}
+
+		Ahora que nuestra VM pod'ia ver el disco hab'ia que montarlo y configurarlo. Primero utlizamos el comando \texttt{sudo fdsik -l} para verificar que el disco fuese detectado por el sistema. Al usar el comando este nos mostr'o que había un disco llamado \texttt{/dev/sdb} de 10GB, ese era el disco que hab'iamos montado.
+
+		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.55]{Images/rsync/rsync_disk_info.PNG}
+    			\caption{Usamos el comando \texttt{sudo fdsik -l} para verificar que el disco fuese detectado por el sistema.}
+    			\label{fig:rsync_disk_info}
+		\end{figure}
+
+		Sabiendo el nombre del disco procedimos a particionarlo y formatearlo. Para esto usamos el comando \texttt{sudo cfdisk /dev/sdb}, este abri'o \texttt{cfdisk} una utilidad que permite crear particiones de discos. Primero nos aseguramos de que este fuese el disco que hab'iamos montado y no solo uno con esa capacidad mirando el tipo de sistema de archivos, este decia \texttt{Free Space}, es decir que no estaba formateado, era nuestro disco. Entonces seleccionamos la opci'on \texttt{New} para crear una nueva partici'on, dejamos el tama'no especificado por \texttt{cfdisk}, que es el m'aximo que permite la unidad. Esto nos devolvi'o al men'u principal, para confirmar los cambios usamos la opci'on \texttt{Write} para escribir los cambios a la tabla de discos del sistema. 
+
+		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.40]{Images/rsync/rsync_disk_partition.PNG}
+    			\caption{Usamos \texttt{cfdisk} para crear una partici'on en el disco nuevo.}
+    			\label{fig:rsync_disk_partition}
+		\end{figure}
+
+		Finalmente confirmamos que la operaci'on se hab'ia realizado de manera exitosa usando la opci'on \texttt{Print}. Esta nos mostr'o que efectivamente hab'ia una partici'on en el disco.
+
+		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_table.PNG}
+    			\caption{Una vez creada la partici'on la verificamos con la opci'on \texttt{Print}.}
+    			\label{fig:rsync_disk_table}
+		\end{figure}
+
+		Ahora que ya ten'iamos una particion que pod'iamos usar llego el momento de formatearla para eso usamos el comando \texttt{sudo mkfs.ext4 /dev/deb}. Lo que hizo fue formatear el disco con el formato \texttt{ext4}\footnote{\texttt{ext4}(fourth extended filesystem) es un sistema de archivos transacional que reemplazo a ext3.}, para poder as'i montarlo.
+		
+ 		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_format.PNG}
+    			\caption{Formateamos el disco con el comando \texttt{sudo mkfs.ext4 /dev/deb}.}
+    			\label{fig:rsync_disk_format}
+		\end{figure}
+
+		Como 'ultimo paso montamos el disco para poder usarlo. Para esto primero creamos una carpeta en la cual montamos el disco, normalmente estas se encuentran en el directorio \texttt{/mnt}. Entonces creamos la carpeta \texttt{/mnt/sdb} con el comando \texttt{sudo mkdir /mnt/sdb}.
+
+		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_mount.PNG}
+    			\caption{Montamos el disco con \texttt{/mnt/sdb}.}
+    			\label{fig:rsync_disk_mount}
+		\end{figure}
+
+		Finalmente montamos el disco para poder usarlo con \texttt{sudo mount /dev/sdb /mnt/sdb}. El problema con solo hacer esto es que tendr'iamos que volver a montar el disco cada vez que iniciacemos el sistema. Para solucionar esto cambiamos el archivo \texttt{/etc/fstab}, que almacena los discos que deben ser montados al iniciar el sistema. Abr'imos el archivo para editarlo con el comando \texttt{sudo vi /etc/fstab}, luego a'nadimos lo siguiente al final del mismo:
+
+		\begin{figure}[H]
+			\centering
+			\begin{code-box}
+				\codetext{dark-gray}{/dev/sdb     /mnt/sdb      ext4        defaults      0       0}
+			\end{code-box}
+		\end{figure}
+		
+		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_automount.PNG}
+    			\caption{Editamos \texttt{sudo vi /etc/fstab} para que el disco se monte automaticamente al iniciar la m'aquina.}
+    			\label{fig:rsync_disk_automount}
+		\end{figure}
+
+		El primer elemento es el camino del disco, el segundo a donde debe ser montado y el tercero el sistema de archvios. Los dem'as los dejamos con sus valores por defecto. Hab'iendo hecho esto el disco deber'ia montarsea automaticamente cada vez que iniciemos la m'aquina. Como una verificaci'on final usamos el comando \texttt{mount \textbar\/ grep ``sdb''}, lo que hace es listar todos los discos montados y buscar uno llamado \texttt{``sdb''}.
+
+		\begin{figure}[H]
+    			\centering
+    			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_check.PNG}
+    			\caption{Editamos \texttt{sudo vi /etc/fstab} para que el disco se monte automaticamente al iniciar la m'aquina.}
+    			\label{fig:rsync_disk_check}
+		\end{figure}
+
+		Al ejecutar el comando vimos que efectivamente hab'ia un disco montado llamado \texttt{``sdb''}, confirmando que el disco estaba montado correctamente. Con el disco montado ahora procedimos a hacer el backup usando \rsync y el nuevo disco.
 
 
 
@@ -87,10 +188,7 @@
 
 
 
-
-
-
-
+	
 
 
 
@@ -111,3 +209,17 @@
 
 
 %Remove whitespace when done.
+	\section{Comandos usados}
+		A continuaci'on se encuentran todos los comandos utilizados en este trabajo, correspondientes a las im'agenes presentadas.
+
+		\begin{figure}[H]
+			\centering
+			\begin{code-box}
+				\codetext{fuchsia}{sudo} \codetext{light-blue}{apt} \codetext{light-orange}{install} \codetext{light-red}{rsync}
+			\end{code-box}
+			\imagecaption{rsync_install}
+		\end{figure}
+
+\end{document}
+
+
