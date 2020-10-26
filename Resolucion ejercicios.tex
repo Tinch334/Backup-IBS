@@ -9,7 +9,16 @@
 \usepackage{subcaption}
 \usepackage[most]{tcolorbox}
 \usepackage{xcolor}
+\usepackage{wrapfig}
+\usepackage{titlesec}
 
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 \setlength{\parindent}{1.0em}
 \setlength{\parskip}{1.0em}
@@ -177,16 +186,178 @@
 
 		Al ejecutar el comando vimos que efectivamente hab'ia un disco montado llamado \texttt{``sdb''}, confirmando que el disco estaba montado correctamente. Con el disco montado ahora procedimos a hacer el backup usando \rsync y el nuevo disco.
 
+	\section{Software comercial}
+		Seg'un la consigna del trabajo, ahora debemos elegir un software de backups comercial, es decir, que sea desarrollado y distrubuido por una empresa, generalmente en forma de una soluci'on paga (que deberemos pagar). Para ello, elegimos uno muy conocido, \textit{EaseUS Todo Backup}, de la empresa, como lo dice el nombre, \textit{EaseUS}. Esta empresa se dedica al desarrollo de software comercial de distinto tipo, ofreciendo soluciones no s'olo para backups, si no software tambi'en dedicado a recuperaci'on de datos, administraci'on de particiones en discos, y transferencia de datos entre computadoras, destac'andose principalmente por el primero de la lista. En cuanto al programa con el que trabajaremos, mencionar que 'este est'a disponible en dos versiones: para uso personal (``\textit{for home}'') y para uso profesional (``\textit{for business}'', tambi'en llamado ``\textit{Enterprise}'') y hasta donde podemos ver, s'olamente desarrollado para SOs Windows.
+		
+	\subsection{Instalaci'on del software}
+		Como dijimos que hay dos versiones, elegimos una de ellas. La especialidad y la materia tienen el objetivo de instruirnos en saber asesorar a negocios y particulares, como tambi'en manejarnos por nuestra cuenta en el 'ambito correspondiente (sea hacer en este caso, backups por la seguridad de nuestros propios datos o los de nuestro propio emprendimiento, en caso de que vayamos a entablar uno), pero dado el particular enfoque del apunte de backups hacia lo profesional, sumado a que en este 'ambito sea aplicable mayor variedad de opciones (y as'i en consecuencia, probablemente el software relacionado sea m'as completo) aplicando m'as de la teor'ia, optamos por probar la versi'on \textit{Enterprise}.
 
+		Para instalarlo, primero nos dirigimos a la p'agina de \textit{EaseUS}, y de all'i a la secci'on de su software de backups, versi'on profesional\footnote{\url{https://www.easeus.com/backup-software/tb-enterprise.html}}. Debemos de descargar el ejecutable correspondiente.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.8\textwidth]{Images/easeus/website}
+			\caption{P'agina principal de \textit{EaseUS Todo Backup Enterprise}}
+		\end{figure}
 
+		En nuestro caso, como lo usaremos nada m'as con prop'ositos demostrativos en este TP, utilizaremos la versi'on de prueba gratuita, \textit{Free Trial}. Destacar que seg'un se indica en el sitio, la versi'on de prueba tiene todas las funciones que la versi'on completa, pero nada m'as por un per'iodo de 30 d'ias, para despu'es del que luego deberemos de pagar para su uso continuado. Este tiempo ser'a m'as que suficiente para ver todas sus funciones, dentro de los medios que tenemos disponibles. 
+		
+		Nos pide si, nuestro correo electr'onico para continuar, pero supuestamente se puede optar por no recibir correos por parte de ellos, aunque dudamos de que aquello se cumpla. Tambi'en es posible que use nuestro correo electr'onico como un m'etodo para evitar estar continuamente volviendo a descargar el programa tras pasados los 30 d'ias.
+		
+		Al finalizar la descarga, tendremos un instalador de alrededor de unos 130 MB, llamado \texttt{tb\_enterprise\_trial.exe}. Al ejecutarlo y comenzar con la instalaci'on, ser'a bastante sencillo como seguir los pasos por los cuales nos gu'ia el instalador. Al comenzar elegimos el idioma del instalador, nos dice de aceptar los t'erminos y condiciones de uso, la ruta de instalaci'on, y la ruta por defecto donde los backups se guardar'ian. Como si un dato curioso, permite manejar de forma centralizada los backups de distintos discos o unidades de almacenamiento que dispongamos a lo largo de m'ultiples sistemas, por un administrador, a trav'es de otro software que parecen proveer,  lo cual puede venir 'util, aunque hay que tener en cuenta que ya en estos casos se optar'ia ya m'as por una soluci'on hecha a medida, como se menciona en la teor'ia.
 
+		\begin{figure}[H]
+			\centering \captionsetup{justification=centering}
+			\subfloat[Terminos y Condiciones]{\includegraphics[width=.45\textwidth]{Images/easeus/install_tyc}}
+			\hfill
+			\subfloat[Opci'on del componente de administraci'on centralizada]{\includegraphics[width=.45\textwidth]{Images/easeus/install_cent}}
+			\par \vspace{15pt}
+			\subfloat[Ruta de instalaci'on]{\includegraphics[width=.45\textwidth]{Images/easeus/install_path}}
+			\hfill
+			\subfloat[Ruta por defecto de backups]{\includegraphics[width=.45\textwidth]{Images/easeus/install_backPath}} \vspace{10pt}
+			\caption{Etapas destacadas del proceso de instalaci'on}
+		\end{figure}
 
+		\subsection{Uso del software}
+		
+		Una vez ya instalado el programa, lo abrimos por primera vez y nos encontramos con la ventana principal desde la cual podemos acceder pr'acticamente a todas las distintas opciones que se ofrecen.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.8\textwidth]{Images/easeus/use_main}
+			\caption{Pantalla principal del programa}
+		\end{figure}
+	
+		\subsubsection{Opciones del programa}
+		
+		\paragraph{Tasks}
+	
+		Podemos observar que hay una barra lateral con distintas secciones. La principal claramente es la de \texttt{TASKS}. All'i podremos encontrar las distintas tareas de backup que hayamos realizado a lo largo del tiempo, como as'i tambi'en poder restaurar alguna copia de seguridad realizada de ser necesario.
+		
+		Para programar una nueva tareas, nos dirigimos al bot'on \texttt{NEW TASK}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.8\textwidth]{Images/easeus/use_newtask}
+			\caption{Ventana para programar una nueva \textit{tarea}}
+		\end{figure}
+	
+		Se nos abrir'a una ventana para lo que ser'ia, traducido al espa'nol, hacer lo que el programa llama una \textit{Nueva Tarea}.
+		
+		Nos encontramos a su vez con m'ultiples apartados. Primero podemos ver que nos permite hacer backup de m'ultiples ``tipos'' de informaci'on:
+		
+		\begin{itemize}
+			\item \textbf{Disk/Volume} (\textit{Disco/Volumen}): Podemos hacer el backup de un volumen\footnote{Un \textit{volumen}, a breve, es un 'area de almacenamiento accesible con un sistema de archivos 'unico, accesible por el sistema operativo.} completo en nuestro sistema. Podemos realizarlo para uno, o varios en simult'aneo.
+			\item \textbf{File} (\textit{Archivo}): Tambi'en podemos hacer el backup de determinados directorios o archivos en nuestro sistema, de forma espec'ifica seg'un nuestras necesidades. Esto es 'util si queremos tener resguardada aparte informaci'on cuya importancia sea mayor al del resto de los archivos del volumen, o si no nos interesa directamente resguardar el resto.
+			\item \textbf{Mail}: Se explica por s'i solo. Permite hacer un backup del correo electr'onico. De todas formas, seg'un pudimos observar, parece estar limitado a aquel sincronizado con el programa de e-mail por defecto de Windows. Como en nuestro caso no lo tenemos configurado, devuelve un mensaje de error. \vspace{-7pt}
 
+			\begin{center}
+				\begin{minipage}{.6\linewidth}
+					\centering
+					\captionsetup{justification=centering}
+					\includegraphics[width=.9\linewidth]{Images/easeus/use_mailerr}
+					\captionof{figure}{Error al intentar acceder a la opci'on de backup de \textit{Mail}}
+				\end{minipage}
+			\end{center}\vspace{3pt}
+		
+			\item \textbf{ExchangeDB} y \textbf{ExchangeMail}: Est'an relacionados al backup de informaci'on de \textit{Exchange}, un servicio ofrecido por \textit{Microsoft} para el manejo de correo electr'onico, calendario y contactos para empresas, accesible a trav'es de m'ultiples plataformas. Como claramente no tenemos acceso a este servicio, no podremos probar esta funci'on.
+			\item \textbf{SQL}: Permite el backup de las bases de datos de tipo \textit{SQL} que tengamos corriendo en un servidor dentro de nuestro sistema. Este tipo de protocolo para el almacenamiento y administraci'on de bases de datos es muy com'un en las distintas empresas, por lo que es bueno que el programa disponga de esta opci'on.
+		\end{itemize}
+	
+		En las pesta'nas de la ventana que si podemos probar (\textit{Disk/Volume} y \textit{File}), a su vez tenemos distintas cosas que podemos configurar. 
+		
+		Est'an las cosas b'asicas, como el destino de la copia de seguridad, que por defecto es el establecido en la instalaci'on (sin modificar nada es \texttt{C:\textbackslash{}My Backups}), y tanto el nombre como la descripci'on del backup que estamos realizando en esta tarea, para poder identificarlo f'acilmente.
+		
+		Otras opciones clave, son \textit{Schedule} (Programar), que permite establecer per'iodos de tiempo mediante los cuales se van a hacer backups de forma autom'atica, y \textit{Backup Cleanup} (Limpieza de backups) que indicar'ia el tiempo que tiene que pasar para que la informaci'on deje de tener validez, as'i el programa autom'aticamente borrar'ia backups pasados esa fecha para liberar espacio.
+		
+		%Me faltó mostrar como era dentro de backup cleanup. Si les parece que hay que ponerlo, agréguenlo, o si lo hago yo. -Ariel
+		
+		\begin{figure}
+			\centering
+			\subfloat[Schedule]{\includegraphics[width=.475\textwidth]{Images/easeus/use_schedule}}
+			\hfill
+			\subfloat[Backup Cleanup]{\includegraphics[width=.475\textwidth]{Images/easeus/use_cleanup}}
+			\vspace{7pt}
+			\caption{Opciones \textit{Schedule} y \textit{Backup Cleanup}}
+		\end{figure}
+	
+		Tambi'en existen cosas m'as avanzadas y en detalle que se pueden configurar si entramos en \textit{Backup options}. Iremos pesta'na por pestan'a con una descripci'on breve de las posibilidades en cada una:
+		
+		\begin{itemize}
+			\item \textit{Performance} (Rendimiento): Podemos definir la prioridad del backup, as'i el programa puede determinar cu'al hacer primero en caso de haber conflictos con varias tareas corriendo en simult'aneo (por ejemplo, puede suceder con backups programados), al igual que la divisi'on del backup en partes si se lo necesita, y el nivel de compresi'on de la informaci'on, para reducir espacio ocupado.
+			\item \textit{Encryption} (Encriptaci'on): Permite establecer una contrase'na para el cifrado de los datos. Seg'un investigamos, el programa usa el algoritmo AES256.
+			\item \textit{E-mail Notification} (Notificaci'on por e-mail): Se puede establecer para que el software notifique mediante correo electr'onico a direcciones designadas, cada vez que se hace un backup, tanto de forma correcta o no. Nuevamente, puede ser 'util principalmente con backups programados.
+			\item \textit{Custom Commands} (Comandos personalizados): Si se desea, se pueden ejecutar comandos de consola tanto antes como despu'es de un backup. Puede ser 'util si se quieren realizar otras tareas antes o despu'es de dichos, que requieran programas o aplicaciones externas.
+			\item \textit{Offsite Copy} (Copia fuera del lugar): Esto es clave si queremos cumplir con la estrategia 3-2-1 mencionada en la teor'ia, en la que se aconseja de tener una copia de los datos fuera del lugar donde originalmente est'an almacenados. Con esta opci'on, podemos ingresar las credenciales de un servidor FTP en el cual hacer una copia del backup realizado.
+			\item \textit{Backup Mode} (Modo del backup): Permite configurar algunas opciones varias referidas al backup. Seg'un si estamos haciendo un backup en modo \textit{Disk/Volume} podemos hacerlo sector por sector, o si hacemos en el modo \textit{File} de mantener las opciones de seguridad que pueda tener cada archivo, entre otros detalles.
+			\item \textit{File Filter} (Filtro de archivos): Permite agregar excepciones a los archivos de los cuales hacer backup, como archivos de determinado formato o en cierta ruta de entre todas las incluidas.
+			\item \textit{Image Check} (Chequeo de imagen): Otro de los puntos claves mencionados en la teoría es la revisión del funcionamiento correcto de las herramientas y de la integridad de los backups realizados para que no existan inconvenientes a la hora de restaurar alguno. Si bien ser'ia ideal que el programa permita con regularidad esta opci'on, en esta secci'on si permite habilitar de chequear la integridad del backup realizado apenas finaliz'o.
+		\end{itemize}
+	
+		\begin{figure}[H]
+			\centering
+			\subfloat[Ventana de \textit{Backup Options} (Pesta'na \textit{Performance})]{\includegraphics[width=.8\textwidth]{Images/easeus/use_perf}} \par \vspace{18pt}
+			\subfloat[\textit{Encryption}]{\includegraphics[width=.3\textwidth]{Images/easeus/use_encryption}} \hfill
+			\subfloat[\textit{E-mail Notification}]{\includegraphics[width=.3\textwidth]{Images/easeus/use_mailnotif}} \hfill
+			\subfloat[\textit{Offsite Copy}]{\includegraphics[width=.3\textwidth]{Images/easeus/use_offsitecopy}} \vspace{10pt}
+			\caption{Algunas de las pesta'nas del apartado \textit{Backup Options}}
+		\end{figure}
+	
+		Cubiertas todas las opciones de la ventana \texttt{NEW TASK}, cubriremos algunas m'as en la barra superior de la pantalla principal presentada al comienzo del apartado. 
+		
+		Tenemos por supuesto que tener una forma de recuperar los archivos. Entonces uno de los botones es \textit{Recovery}, en el cual podemos elegir desde un archivo de backup, la ubicaci'on a la cual restaurar su contenido. Si se hace uso del bot'on mientras se selecciona una tarea, tendremos las opciones mencionadas, ya asumiendo que estamos intentado restaurar el backup correspondiente a dicha, pudiendo seleccionar entre los distintos backups relacionados disponibles hechos a lo largo del tiempo (se visualizar'a mejor al poner a prueba el programa con el backup de un pendrive en la pr'oxima secci'on). Similarmente, la opci'on \textit{System Transfer} permite lo mismo pero con backups hechos sobre sistemas completos.
+		
+		Otra de las opciones que aparecen si seleccionamos una tarea en espec'ifico, es la de hacer un backup de la tarea, y del bot'on sale un men'u desplegable en el cual nos permite elegir entre un backup completo, diferencial e incremental, los cuales ya definimos al comienzo del TP (tambi'en a demostrar mejor en la pr'oxima secci'on). Fuera de esto, el resto de las botones nuevos que aparecen permiten visualizar detalles de la tarea, editar sus opciones y exportarla a un archivo, para si luego se desea pasarse a otra computadora con el mismo programa.
+		
+		%No hay tantas fotos acá al final porque va más para la parte de lo del pendrive
+		
+		\paragraph{Logs}
+		
+		Nos muestra una lista de todas las distintas acciones realizadas con el programa, como crear tareas, ejecutar backups, etc, a lo largo del tiempo, y si se sucedieron correctamente o no. Si se desea, con el bot'on en la esquina superior \textit{Export Logs} se pueden exportar los registros a un archivo \texttt{.csv}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.8\textwidth]{Images/easeus/use_logs}
+			\caption{Apartado \textit{Logs}, luego de realizar m'ultiples operaciones de prueba}
+		\end{figure} 
+		
+		\paragraph{License}
+		
+		Aqu'i se muestran las m'ultiples licencias de uso del software, en caso que se dispongan m'ultiples si se utilizan en m'ultiples computadoras, por ejemplo.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.8\textwidth]{Images/easeus/use_license}
+			\caption{Apartado \textit{License}}
+		\end{figure} 
+	
+		\paragraph{Tools}
+		
+		No es un apartado de por s'i, si no que contiene una lista de m'ultiples herramientas individuales adicionales que incluye el programa. Repasaremos brevemente por ellas:
+		
+		\begin{itemize}
+			\item \textit{SQL Credential Manager} (Administrador de credenciales de SQL): Permite administrar las claves de autenticaci'on en las bases de datos SQL en el sistema, de existir.
+			\item \textit{Disk/Partition Clone} (Clonar discos/particiones): Como lo dice su nombre, permite hacer copias completas de volumenes en otros accesibles en el sistema.
+			\item \textit{Import Task} y \textit{Export Task}: (Importar Tarea y Exportar Tarea): Antes dijimos que pod'iamos exportar una tarea, por lo que a partir de estas utilidades podr'iamos volver a importarlas y tambi'en tener otra forma de exportarlas.
+			\item \textit{Check Image} (Verificar Imagen): Otra forma de verificar la imagen de un backup realizado.
+			\item \textit{Emergency Disk} (Disco de emergencia): Permite crear un CD/DVD o pendrive USB booteable con Windows o Linux, en caso de que se requieran recuperar backups almacenados localmente y el SO no sea capaz de bootear.
+			\item \textit{P2V Recovery} y \textit{P2V Copy} (Recuperaci'on de P2V y Copia P2V): P2V, de sus siglas en ingl'es, \textit{Physical-to-Virtual} es un proceso mediante el cual se migra el sistema operativo y los datos a un entorno virtual. Esto permite correr m'ultiples aplicaciones en simult'aneo dentro de una misma computadora, de forma a'islada. Por lo tanto, esta herramienta nso permitir'ia transferir los datos a un entorno virtual como tambi'en recuperarlos del mismo.
+			\item \textit{Tape Manager} (Administrador de cassettes): Permite copiar datos a cassettes, siendo 'util para almacenamiento de informaci'on a largo plazo, dada su comprobada confiabilidad dado que son uno de los que menos se degradan a lo largo del tiempo.
+			\item \textit{Mount/Unmount} (Montar/Desmontar): Permite, como lo dice el nombre, montar y desmontar backups realizados (formato \texttt{.pbd} como discos, para poder verificar su validez y sus contenidos.
+			\item \textit{iSCSI Initiatior} (Iniciador iSCSI): El protocolo \texttt{iSCSI} permite a una computadora conectarse a un dispositivo \texttt{SCSI}\footnote{\texttt{SCSI}, de sus siglas en ingl'es, \textit{Small Computer System Interface}, es una interfaz est'andar para la transferencia de datos entre distintos dispositivos del bus de una computadora.} en la misma red.
+			\item \textit{Enable PreOS} (Activar PreSO): Habilita un men'u de booteo cuando la compu inicia, antes que Windows, para tener una posibilidad de recuperar los datos en caso de que este 'ultimo falle.
+			\item \textit{Enable PXE} (Activar PXE): PXE, de sus siglas en ingl'es, \textit{Preboot Execution Environment}, es un entorno que permite arrancar e instalar el sistema operativo de una computadora a distancia. En este caso, permite arrancar el entorno \textit{PreSO} hablado a trav'es de la red.
+			\item \textit{Refresh Disks} (Actualizar discos): Simplemente permite actualizar para el programa la lista de discos, particiones, volumenes accesibles por la computadora. 'Util si recientemente hemos conectado alguno nuevo y no est'a siendo reconocido por el software de backup, sin necesidad de reiniciarlo.
+		\end{itemize}
+	
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.34\textwidth]{Images/easeus/use_tools}
+			\caption{Lista de herramientas (\textit{Tools}) completa en el men'u izquierdo}
+		\end{figure}
 
-
-
-
-
+		\subsubsection{Haciendo backup de un pendrive}
+		
 
 	
 
