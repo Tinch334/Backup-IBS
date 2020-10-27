@@ -100,7 +100,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.7]{Images/rsync/rsync_install.PNG}
-    			\caption{Instalamos \rsync{} con \texttt{sudo apt-get install rsync}.}
+    			\caption{Instalamos \rsync{} con \texttt{sudo apt-get install rsync}}
     			\label{fig:rsync_install}
 		\end{figure}
 
@@ -122,7 +122,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.55]{Images/rsync/rsync_disk_info.PNG}
-    			\caption{Usamos el comando \texttt{sudo fdsik -l} para verificar que el disco fuese detectado por el sistema.}
+    			\caption{Usamos el comando \texttt{sudo fdsik -l} para verificar que el disco fuese detectado por el sistema}
     			\label{fig:rsync_disk_info}
 		\end{figure}
 
@@ -131,7 +131,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.40]{Images/rsync/rsync_disk_partition.PNG}
-    			\caption{Usamos \texttt{cfdisk} para crear una partici'on en el disco nuevo.}
+    			\caption{Usamos \texttt{cfdisk} para crear una partici'on en el disco nuevo}
     			\label{fig:rsync_disk_partition}
 		\end{figure}
 
@@ -140,7 +140,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_table.PNG}
-    			\caption{Una vez creada la partici'on la verificamos con la opci'on \texttt{Print}.}
+    			\caption{Una vez creada la partici'on la verificamos con la opci'on \texttt{Print}}
     			\label{fig:rsync_disk_table}
 		\end{figure}
 
@@ -149,7 +149,7 @@
  		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_format.PNG}
-    			\caption{Formateamos el disco con el comando \texttt{sudo mkfs.ext4 /dev/deb}.}
+    			\caption{Formateamos el disco con el comando \texttt{sudo mkfs.ext4 /dev/deb}}
     			\label{fig:rsync_disk_format}
 		\end{figure}
 
@@ -158,7 +158,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.75]{Images/rsync/rsync_disk_mount.PNG}
-    			\caption{Creamos el directorio donde montar el disco con \texttt{sudo mkdir /mnt/sdb}.}
+    			\caption{Creamos el directorio donde montar el disco con \texttt{sudo mkdir /mnt/sdb}}
     			\label{fig:rsync_disk_mount}
 		\end{figure}
 
@@ -174,7 +174,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_automount.PNG}
-    			\caption{Editamos \texttt{sudo vi /etc/fstab} para que el disco se monte automaticamente al iniciar la m'aquina.}
+    			\caption{Editamos \texttt{sudo vi /etc/fstab} para que el disco se monte automaticamente al iniciar la m'aquina}
     			\label{fig:rsync_disk_automount}
 		\end{figure}
 
@@ -183,7 +183,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.65]{Images/rsync/rsync_disk_check.PNG}
-    			\caption{Verificamos que el disco este estuviese montado correctamente con \texttt{mount \textbar\/ grep ``sdb''}.}
+    			\caption{Verificamos que el disco este estuviese montado correctamente con \texttt{mount \textbar\/ grep ``sdb''}}
     			\label{fig:rsync_disk_check}
 		\end{figure}
 
@@ -192,7 +192,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.75]{Images/rsync/rsync_disk_touch.PNG}
-    			\caption{Intentamos crear un archivo con \texttt{touch Prueba}.}
+    			\caption{Intentamos crear un archivo con \texttt{touch Prueba}}
     			\label{fig:rsync_disk_touch}
 		\end{figure}
 
@@ -201,7 +201,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.75]{Images/rsync/rsync_disk_works.PNG}
-    			\caption{Cambiamos el due'no de \texttt{sdb} para solucionar el problema y lo verificamos.}
+    			\caption{Cambiamos el due'no de \texttt{sdb} para solucionar el problema y lo verificamos}
     			\label{fig:rsync_disk_works}
 		\end{figure}
 
@@ -213,7 +213,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.80]{Images/rsync/rsync_backup_C_contents.PNG}
-    			\caption{Los contenidos del directorio \texttt{C}.}
+    			\caption{Los contenidos del directorio \texttt{C}}
     			\label{fig:rsync_C_contents}
 		\end{figure}
 
@@ -222,7 +222,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.80]{Images/rsync/rsync_backup_first_try.PNG}
-    			\caption{Nuestro primer intento de usar \rsync{}.}
+    			\caption{Nuestro primer intento de usar \rsync{}}
     			\label{fig:rsync_backup_first_try}
 		\end{figure}
 
@@ -231,7 +231,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.80]{Images/rsync/rsync_backup_contents.PNG}
-    			\caption{Los contenidos de \backup{}, mostrados con {ls -Rl /mnt/sdb/Backup}.}
+    			\caption{Los contenidos de \backup{}, mostrados con {ls -Rl /mnt/sdb/Backup}}
     			\label{fig:rsync_backup_contents}
 		\end{figure}
 
@@ -242,7 +242,7 @@
 		\begin{figure}[H]
     			\centering
     			\includegraphics[scale=0.80]{Images/rsync/rsync_backup_forwardslash.PNG}
-    			\caption{La diferencia entre usar y no usar la barra en \rsync{}.}
+    			\caption{La diferencia entre usar y no usar la barra en \rsync{}}
     			\label{fig:rsync_backup_forwardslash}
 		\end{figure}
 
@@ -252,14 +252,14 @@
 			\centering
 			\begin{subfigure}{0.75\linewidth}
 				\includegraphics[width=1\linewidth]{Images/rsync/rsync_backup_verbose.PNG}
-				\caption{\rsync{} con la opci'on \texttt{-v}.}
+				\caption{\rsync{} con la opci'on \texttt{-v}}
 			\end{subfigure}
 			\bigbreak
 			\begin{subfigure}{0.7\linewidth}
 				\includegraphics[width=1\linewidth]{Images/rsync/rsync_backup_delete.PNG}
-				\caption{\rsync{} con la opci'on \texttt{--delete}.}
+				\caption{\rsync{} con la opci'on \texttt{--delete}}
 			\end{subfigure}
-			\caption{Probamos usar las opciones \texttt{-v} y \texttt{--delete} con \rsync{}.}
+			\caption{Probamos usar las opciones \texttt{-v} y \texttt{--delete} con \rsync{}}
 			\label{fig:rsync_backup_options_1}
 		\end{figure}
 
@@ -268,7 +268,7 @@
 		\begin{itemize}
 			\customitem{-r} Hace que el directorio a copiar se copie de manera recursiva, permitiendo copiar subdirectorios y sus contenidos.
 			\customitem{-l} Mantiene los enlaces s'imbolicos encontrados.
-			\customitem{-p} Mantiene los permisos originales de los archivos copiados. Sin esta opci'on los archivos existentes(incluyendo los que se actualizan) mantienen sus permisos. Para los nuevos los bits de permisos son iguales a los originales tras ser enmascarados con los bits de permiso de los predeterminados del directorio de destino.
+			\customitem{-p} Mantiene los permisos originales de los archivos copiados. Sin esta opci'on los archivos existentes(incluyendo los que se actualizan) mantienen sus permisos. Para los nuevos los bits de permisos son iguales a los originales tras ser enmascarados con los bits de permiso predeterminados del directorio de destino.
 			\customitem{-t} Hace que los tiempos de modificaci'on se transfieran de los archivos originales a los copiados. Si esta opci'on no se incluye, durante el pr'oximo backup todos los archivos van a ser actualizados, es decir copiados nuevamente.
 			\customitem{-g} Mantiene el grupo de los archivos copiados. Si esta opci'on no se incluye los archivos copiados toman el grupo de el usuario que haya ejecutado el comando.
 			\customitem{-o} Mantiene el due'no de los archivos copiados. Si esta opci'on no se incluye el due'no de los archivos copiados pasa a ser el usuario que haya ejecutado el comando.
@@ -285,7 +285,7 @@
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.7]{Images/rsync/rsync_backup_final.PNG}
-			\caption{Usamos \rsync{} con todas las opciones que decidimos.}
+			\caption{Usamos \rsync{} con todas las opciones que decidimos}
 			\label{fig:rsync_backup_final}
 		\end{figure}
 
@@ -294,7 +294,7 @@
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.7]{Images/rsync/rsync_backup_final_result.PNG}
-			\caption{Verificamos que los resultados del backup fuesen correctos.}
+			\caption{Verificamos que los resultados del backup fuesen correctos}
 			\label{fig:rsync_backup_final_result}
 		\end{figure}
 
@@ -303,7 +303,7 @@
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.7]{Images/rsync/rsync_backup_incremental.PNG}
-			\caption{Revisamos si \rsync{} hac'ia backups diferenciales con nuestra configuraci'on.}
+			\caption{Revisamos si \rsync{} hac'ia backups diferenciales con nuestra configuraci'on}
 			\label{fig:rsync_backup_incremental}
 		\end{figure}
 
@@ -313,7 +313,7 @@
 	\subsection{Instalaci'on del software}
 	Como dijimos que hay dos versiones, elegimos una de ellas. La especialidad y la materia tienen el objetivo de instruirnos en saber asesorar a negocios y particulares, como tambi'en manejarnos por nuestra cuenta en el 'ambito correspondiente (sea hacer en este caso, backups por la seguridad de nuestros propios datos o los de nuestro propio emprendimiento, en caso de que vayamos a entablar uno), pero dado el particular enfoque del apunte de backups hacia lo profesional, sumado a que en este 'ambito sea aplicable mayor variedad de opciones (y as'i en consecuencia, probablemente el software relacionado sea m'as completo) aplicando m'as de la teor'ia, optamos por probar la versi'on \textit{Enterprise}.
 	
-	Para instalarlo, primero nos dirigimos a la p'agina de \textit{EaseUS}, y de all'i a la secci'on de su software de backups, versi'on profesional\footnote{\url{https://www.easeus.com/backup-software/tb-enterprise.html}}. Debemos de descargar el ejecutable correspondiente.
+	Para instalarlo, primero nos dirigimos a la p'agina de \textit{EaseUS}, y de all'i a la secci'on de su software de backups, versi'on profesional.\footnote{\url{https://www.easeus.com/backup-software/tb-enterprise.html}} Debemos de descargar el ejecutable correspondiente.
 	
 	\begin{figure}[H]
 		\centering
@@ -532,7 +532,7 @@
 		\vspace{7pt}
 	\end{figure}
 	
-    Lo siguiente que hicimos fue realizar un backup diferencial. Pero antes, para poder observar su funcionamiento, creamos en el pendrive un archivo ``\texttt{prueba.txt}’’. Luego procedimos a hacer el backup diferencial y comparamos el tama'no con el de los otros, as'i como su contenido: ten'ia los mismos datos que el incremental y, adem'as, el archivo nuevo que hab'iamos creado (como ya explicamos al principio de este trabajo, el diferencial copia todos los cambios desde el 'ultimo completo hecho). 
+    Lo siguiente que hicimos fue realizar un backup diferencial. Pero antes, para poder observar su funcionamiento, creamos en el pendrive un archivo ``\texttt{prueba.txt}’’. \footnote{Al crear el archivo de prueba, olvidamos que no ten'iamos las extensiones habilitadas (es decir, se mostraba el nombre del archivo, pero no su extensi'on) y, por ese motivo, el archivo se termin'o llamando ``prueba.txt.txt’’.} Luego procedimos a hacer el backup diferencial y comparamos el tama'no con el de los otros, as'i como su contenido: ten'ia los mismos datos que el incremental y, adem'as, el archivo nuevo que hab'iamos creado (como ya explicamos al principio de este trabajo, el diferencial copia todos los cambios desde el 'ultimo completo hecho). 
 
     \begin{figure}[H]
 		\centering
@@ -543,11 +543,8 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/10-t2_difv1_c1.png}
-		\caption{Contenido del backup diferencial\footnotemark\/}
+		\caption{Contenido del backup diferencial}
 	\end{figure}
-    
-    \footnotetext{{Al crear el archivo de prueba, olvidamos que no ten'iamos las extensiones habilitadas (es decir, se mostraba el nombre del archivo, pero no su extensi'on)
-    y, por ese motivo, el archivo se termin'o llamando ``prueba.txt.txt’’.}}
         
     Lo pr'oximo fue realizar otro backup incremental. No cambiamos los contenidos del pendrive para hacerlo. Una vez hecha esta copia, volvimos a observar sus caracter'isticas y a compararlas con las de las anteriores: el incremental era m'as chico que el diferencial.
 
