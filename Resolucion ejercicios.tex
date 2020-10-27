@@ -479,6 +479,166 @@
 	
 	\subsubsection{Haciendo backup de un pendrive}
 
+	
+	\subsubsection{Haciendo backup de un pendrive}
+	\paragraph{Diferencias entre los backups}
+    Para probar y poner en pr'actica algunas de las funciones provistas por el programa, decidimos hacer un backup de un pendrive. Antes de comenzar, metimos en 'el archivos variados para tener algo con lo que trabajar.
+
+
+	Lo primero que tratamos de hacer fue un backup del pendrive tomando a este como un volumen, para lo que debimos crear una nueva tarea y, en ella, seleccionar el volumen deseado, lugar de destino y nombre de la copia. Lamentablemente este intento no funcion'o. Probamos borrar la task y reiniciar el programa, crear tareas nuevas similares, pero tampoco lograron su objetivo. Hacer una copia del pendrive como volumen no dio frutos.
+
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/1-bp_volumen.png}
+		\caption{Creaci'on de un backup del pendrive como volumen}
+		\label{bp_volumen}
+	\end{figure}
+	
+	Es por eso que se nos ocurri'o hacer un backup de la unidad entera como ``File". Para eso, sin borrar ninguna anterior, creamos una nueva task y nos dirigimos a la segunda pesta'na, que dice “File”. En ella, seleccionamos el pendrive mencionado y, debajo, en la descripci'on, al igual que en la tarea anterior, indicamos el destino y el nombre del nuevo backup. Esta prueba se realiz'o con 'exito. Para verificar que todo hab'ia salido bien, nos dirigimos a la carpeta que indicamos como destino y encontramos un archivo ``\texttt{File Backup\_20201024\_Full\_v1}’’, que ten'ia guardados los mismos archivos que el pendrive. %Algo que le otorga comodidad al uso de este software es que los resultados del programa pueden abrirse con el explorador de archivos de Windows.
+
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/2-t2_file.png}
+		\caption{Creaci'on de un backup del pendrive como archivo}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\subfloat[Archivo de backup]{\includegraphics[width=.475\textwidth]{Images/easeus/pendrive/3-t2_dir_1.png}}
+		\hfill
+		\subfloat[Contenido del backup]{\includegraphics[width=.475\textwidth]{Images/easeus/pendrive/4-t2_fullv1_c1.png}}
+		\vspace{7pt}
+	\end{figure}
+	
+    Para probar que los backups se realizaran correctamente, borramos algunos archivos ejecutables que se encontraban en el pendrive. Luego realizamos, sobre este, un backup incremental y lo comparamos con el completo realizado anteriormente: el m'as peque'no era el incremental. Adem'as verificamos su contenido: este 'ultimo no ten'ia los archivos que hab'ian sido borrados, mientras que el completo, s'i.
+    
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/5-borrar_exe.png}
+		\caption{Borramos algunos archivos del pendrive}
+	\end{figure}
+    
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/6-t2_dir_2.png}
+		\caption{Contenido de la carpeta ``File Backup'', con los archivos de copia generados}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\subfloat[Contenido del incremental]{\includegraphics[width=.475\textwidth]{Images/easeus/pendrive/7-t2_incv1_c1.png}}
+		\hfill
+		\subfloat[Contenido del completo]{\includegraphics[width=.475\textwidth]{Images/easeus/pendrive/8-t2_fullv1_c2.png}}
+		\vspace{7pt}
+	\end{figure}
+	
+    Lo siguiente que hicimos fue realizar un backup diferencial. Pero antes, para poder observar su funcionamiento, creamos en el pendrive un archivo ``\texttt{prueba.txt}’’. Luego procedimos a hacer el backup diferencial y comparamos el tama'no con el de los otros, as'i como su contenido: ten'ia los mismos datos que el incremental y, adem'as, el archivo nuevo que hab'iamos creado (como ya explicamos al principio de este trabajo, el diferencial copia todos los cambios desde el 'ultimo completo hecho). 
+
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/9-pruebatxt.png}
+		\caption{Creaci'on de \texttt{prueba.txt}}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/10-t2_difv1_c1.png}
+		\caption{Contenido del backup diferencial\footnotemark\/}
+	\end{figure}
+    
+    \footnotetext{{Al crear el archivo de prueba, olvidamos que no ten'iamos las extensiones habilitadas (es decir, se mostraba el nombre del archivo, pero no su extensi'on)
+    y, por ese motivo, el archivo se termin'o llamando ``prueba.txt.txt’’.}}
+        
+    Lo pr'oximo fue realizar otro backup incremental. No cambiamos los contenidos del pendrive para hacerlo. Una vez hecha esta copia, volvimos a observar sus caracter'isticas y a compararlas con las de las anteriores: el incremental era m'as chico que el diferencial.
+
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/11-t2_dir_3.png}
+		\caption{Contenido de la carpeta ``File Backup'', con los archivos de copia generados}
+		\label{imagenes_t2}
+	\end{figure}
+	
+	A modo de resumen y para observar mejor las diferencias entre los tipos de backups, prestemos atenci'on a la siguiente imagen: el primer backup que hicimos fue completo, con un tamaño de 2.510,352 KB. Esta primera copia conten'ia \texttt{todos} los archivos del pendrive. Luego de realizar algunos cambios en los archivos originales, hicimos un backup incremental, que pes'o 884 KB y conten'ia \texttt{s'olo los ficheros modificados}.
+    La siguiente copia de seguridad que hicimos fue diferencial, conten'ia los archivos modificados (lo mismo que el incremental anterior) y, adem'as, el archivo prueba.txt que hab'iamos creado.
+    Por 'ultimo, hicimos otro incremental, que no conten'ia nada: no se hab'ian efectuado cambios entre esta copia y la anterior.
+    
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/12-bp_tipos.png}
+	\end{figure}
+	
+    \paragraph{Recuperaci\'on de datos}
+    Otra funci'on que decidimos probar fue la de restaurar datos: obtener los archivos que est'an guardados en una copia de seguridad y reintegrarlos en nuestro sistema en el estado en que estaban al momento de hacer el backup. Para eso, hicimos click derecho sobre la tarea deseada, y, en el men'u de opciones desplegado, elegimos ``\texttt{Recuperaci'on}’’. Esa opci'on abri'o una nueva ventana como la de la imagen. Le pedimos que dejara los datos recuperados en una carpeta del escritorio. Luego, corroboramos que los archivos se hubieran restaurado correctamente.
+
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{Images/easeus/pendrive/13-rec_1.png}
+		\caption{Opci'on para la recuperaci'on de datos}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=.56]{Images/easeus/pendrive/14-rec_2.png}
+		\caption{Elecci'on de la ubicaci'on de los datos recuperados}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\subfloat[Contenido de la carpeta con los archivos recuperados]{\includegraphics[width=.475\textwidth]{Images/easeus/pendrive/15-rec_3.png}}
+		\hfill
+		\subfloat[Corroboramos que los archivos no se encontraran da'nados]{\includegraphics[width=.475\textwidth]{Images/easeus/pendrive/16-rec_4.png}}
+		\vspace{7pt}
+	\end{figure}
+	
+	\paragraph{Detalles de la tarea}
+	
+	Para ver los detalle de una tarea deseada, hicimos click derecho sobre ella y seleccionamos la opci'on ``\texttt{Detalles}'' del men'u desplegado. 
+    
+    Los detalles de la tarea se organizan en tres pesta'nas:
+	
+	\begin{itemize}
+		\item {La primera, \texttt{informaci'on b'asica}, contiene datos como el nombre de la misma, tipo de backup (si es por volumen, por archivo, etc), d'onde se guardan las im'agenes y si existen programas para crear o eliminar copias.}
+		
+		\item{La segunda pesta'na brinda informaci'on sobre las \texttt{im'agenes de copia de seguridad}: fecha de creaci'on, tipo (diferencial, incremental o completa), ubicaci'on y nombre. Se pueden hacer diferentes im'agenes en una misma tarea, como hicimos en este trabajo. De esta manera, las distintas copias se van comparando y complementando entre s'i: la diferencial respecto a una completa y la incremental respecto a cualquier otra realizada, pero siempre de la misma tarea.}
+		\item{La 'ultima pesta'na, \texttt{detalles del backup}, nos informa sobre procesos que est'an corriendo en este momento relacionados con esta tarea.}
+	\end{itemize}
+	
+    \begin{figure}[]
+		\centering
+		\includegraphics[scale=.56]{Images/easeus/pendrive/17-t2_d1.png}
+		\caption{Informaci'on b'asica}
+	\end{figure}
+	
+    \begin{figure}[H]
+		\centering
+		\includegraphics[scale=.56]{Images/easeus/pendrive/18-t2_d2.png}
+		\caption{Im'agenes de copia de seguridad}
+	\end{figure}
+
+    \begin{figure}[H]
+		\centering
+		\includegraphics[scale=.56]{Images/easeus/pendrive/19-t2_d3.png}
+		\caption{Detalles de la copia de seguridad}
+	\end{figure}
+	
+	
+	\paragraph{Comprobar imagen}
+	
+    Por 'utimo, probamos la funci'on de comprobar la imagen. Esta utilidad nos comunica la validez de una copia de seguridad. Esta informaci'on es importante porque, si una copia se encuentra da'nada, es muy probable que los datos no se puedan recuperar. Para averiguar eso, nos dirigimos a la lista de tareas, hicimos click derecho y luego seleccionamos ``\texttt{Comprobar imagen}’’ sobre la deseada. Los resultados pueden observarse en la figura \ref{resultados}.
+
+    \begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6, width=.8\textwidth]{Images/easeus/pendrive/20-t2_ch1.png}
+		\caption{Elegimos la opci'on \texttt{comprobar imagen}}
+	\end{figure}
+    
+    \begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6, width=.8\textwidth]{Images/easeus/pendrive/21-t2_ch2.png}
+		\caption{Imagen comprobada}
+        \label{resultados}
+    \end{figure}
+
 	%Looks nicer
 	\newpage
 	\section{Comandos usados}
